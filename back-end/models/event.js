@@ -6,13 +6,17 @@ const Schema = mongoose.Schema;
 
 const eventSchema = new Schema({
     title: String,
-    place: String,
-    date: String,
-    time: String,
+    location: String,
+    dateStart: String,
+    dateEnd:String,
+    timeStart: String,
+    timeEnd:String,
     description: String,
     price: String,
     contact: String,
-    eventPict: String
+    eventPict: String,
+    eventType:String,
+    eventTopic:String
 });
 
 const Eventdb = mongoose.model("event", eventSchema);

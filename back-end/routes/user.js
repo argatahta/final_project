@@ -9,7 +9,9 @@ router.post("/register", (req, res)=>{
     let newObj = new userdb({
         username : req.body.username,
         password : req.body.password,
-        email: req.body.email
+        email: req.body.email,
+        firstname : req.body.firstname,
+        lastname : req.body.lastname
     });
 
     newObj.save((error)=>{

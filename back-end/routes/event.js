@@ -26,7 +26,7 @@ module.exports = function (passport) {
         })
     })
 
-    router.post("/",passport.authenticate("auth", {session:false}), (req, res) => {
+    router.post("/", passport.authenticate("auth", { session: false }), (req, res) => {
         if (!req.files.eventPict) {
             return res.status(400).send("No files were uploaded");
         }
@@ -37,7 +37,7 @@ module.exports = function (passport) {
         let extLast = ext[ext.length - 1].toLowerCase();
 
 
-        if (extLast == "png" || extLast == "jpg" || extLast == "jpeg") {
+        if (extLast == "png" || extLast == "jpg" || extLast == "jpeg" || extLast == "bmp" || extLast == "gif") {
             let imageName = Date.now() + "." + extLast;
 
             image.mv("./public/event/" + imageName, (error) => {
@@ -45,13 +45,17 @@ module.exports = function (passport) {
 
                 let newObj = new eventdb({
                     title: req.body.title,
-                    place: req.body.place,
-                    date: req.body.date,
-                    time: req.body.time,
+                    location: req.body.location,
+                    dateStart: req.body.dateStart,
+                    dateEnd: req.body.dateEnd,
+                    timeStart: req.body.timeStart,
+                    timeEnd: req.body.timeEnd,
                     description: req.body.description,
                     price: req.body.price,
                     contact: req.body.contact,
-                    eventPict: "http://localhost:3000/event/" + imageName
+                    eventPict: "http://localhost:3000/event/" + imageName,
+                    eventType: req.body.eventType,
+                    eventTopic: req.body.eventTopic
                 });
 
                 newObj.save((error) => {
@@ -68,7 +72,7 @@ module.exports = function (passport) {
         };
     });
 
-    router.delete("/:id",passport.authenticate("auth", {session:false}), (req, res) => {
+    router.delete("/:id", passport.authenticate("auth", { session: false }), (req, res) => {
         eventdb.findByIdAndRemove(req.params.id, (error) => {
             if (error) {
                 res.status(500).send(error);
@@ -78,16 +82,20 @@ module.exports = function (passport) {
         });
     });
 
-    router.put("/", passport.authenticate("auth", {session:false}),(req, res) => {
+    router.put("/", passport.authenticate("auth", { session: false }), (req, res) => {
 
         let newObj = {
             title: req.body.title,
-            place: req.body.place,
-            date: req.body.date,
-            time: req.body.time,
+            location: req.body.location,
+            dateStart: req.body.dateStart,
+            dateEnd: req.body.dateEnd,
+            timeStart: req.body.timeStart,
+            timeEnd: req.body.timeEnd,
             description: req.body.description,
             price: req.body.price,
             contact: req.body.contact,
+            eventType: req.body.eventType,
+            eventTopic: req.body.eventTopic
         };
 
         eventdb.findByIdAndUpdate(req.body._id, newObj, (error, result) => {
