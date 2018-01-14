@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Event and Place In Indonesia </title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- CSS -->
+  <link href="assets/css/base.css" rel="stylesheet">
+
+  <!-- Radio and check inputs -->
+  <link href="assets/css/skins/square/grey.css" rel="stylesheet">
+  
+  <!-- Range slider -->
+  <link href="assets/css/ion.rangeSlider.css" rel="stylesheet" >
+  <link href="assets/css/ion.rangeSlider.skinFlat.css" rel="stylesheet">
+
+  <!-- Google web fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Gochi+Hand' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+  <app-root></app-root>
+
+  <!-- Common scripts -->
+  <script src="assets/js/jquery-1.11.2.min.js"></script>
+  <script src="assets/js/common_scripts_min.js"></script>
+  <script src="assets/js/functions.js"></script>
+  <script src="assets/js/owl.carousel.min.js"></script>
+  <!-- Cat nav mobile -->
+  <script src="assets/js/cat_nav_mobile.js"></script>
+  <!-- Check and radio inputs -->
+  <script src="assets/js/icheck.min.js"></script>
+  <!-- Map -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCdOZPZS8t8IYhAA74cWpnfPvxBF3RkrQ&libraries=places"
+  type="text/javascript"></script> 
+  <script src="assets/js/map_restaurants.js"></script>
+  <script src="assets/js/infobox.js"></script>
+
+
+  <script>
+    //Search bar
+    $(function () {
+      "use strict";
+      $("#searchDropdownBox").change(function () {
+        var Search_Str = $(this).val();
+        //replace search str in span value
+        $("#nav-search-in-content").text(Search_Str);
+      });
+    });
+  </script>
+</body>
+
+
+
+</html>

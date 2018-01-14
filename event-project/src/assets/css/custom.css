@@ -1,0 +1,8 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* OWL CAROUSEL NEXT PREV BUTTON IS HIDING */
+.owl-nav{
+    display: none;
+}
+
