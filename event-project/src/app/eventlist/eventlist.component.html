@@ -1,9 +1,10 @@
-<section class="parallax-window" data-parallax="scroll" data-image-src="img/restaurant_top.jpg" data-natural-width="1400"
-  data-natural-height="470">
-  <div class="parallax-content-1">
+<section class="parallax-window" data-parallax="scroll" style="background: url(../assets/img/eventImage/Jakarta-Panorama.jpg) no-repeat center center;background-size:cover;text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+">
+  <div class="parallax-content-1" style="background-color:rgba(0,0,0,.32);
+  " >
     <div class="animated fadeInDown">
-      <h1>Paris restaurants</h1>
-      <p>Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.</p>
+      <h1>Event Lists</h1>
+      <p>Find event by your interest !</p>
     </div>
   </div>
 </section>
@@ -79,29 +80,66 @@
         <h4>Need
           <span>Help?</span>
         </h4>
-        <a href="tel://004542344599" class="phone">+45 423 445 99</a>
+        <a href="tel://085716777334" class="phone">+62 857 167 7734</a>
         <small>Monday to Friday 9.00am - 7.30pm</small>
       </div>
     </aside>
     <!--End aside -->
-    
+
     <div class="col-lg-9 col-md-9">
+
+      <div id="tools">
+
+        <div class="row">
+          <div class="col-md-4 col-sm-4 col-xs-6">
+            <div class="styled-select-filters">
+              <select class="form-control" name="eventType" id="eventType" type="text" [ngModel]="eventTypeFilter"(ngModelChange)="onChangeType($event)">
+                <option disabled selected>Find by Event Type</option>
+                <option *ngFor="let t of typeList" [value]="t">{{t}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-6">
+            <div class="styled-select-filters">
+              <select class="form-control" name="eventTopic" id="eventTopic" type="text" [ngModel]="eventTopicFilter" (ngModelChange)="onChangeTopic($event)">
+                <option selected disabled>Find by Event Topic</option>
+                <option *ngFor="let t of topicList" [value]="t">{{t}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div *ngFor="let e of eventList, let i = index" class="strip_all_tour_list wow fadeIn" data-wow-delay="0.1s">
         <div class="row">
           <div class="col-lg-4 col-md-4 col-sm-4">
             <div class="img_list">
               <a routerLink="/detail/{{e._id}}">
-                <img src="{{e.eventPict}}" alt="Image">
+                <img src="{{e.eventPict}}" class="img-responsive" alt="Image">
               </a>
             </div>
           </div>
           <div class="clearfix visible-xs-block"></div>
           <div class="col-lg-6 col-md-6 col-sm-6">
-            <div class="tour_list_desc">
+            <div style="padding-top: 20px;padding-bottom:20px;" class="tour_list_desc">
               <h3>
                 {{e.title}}</h3>
-              <p>{{e.description}}</p>
+              <p><b>Location:</b> {{e.location}}</p>
+              <hr>
+              <p><b>Topic:</b> {{e.eventTopic}} <br><b>Type</b> : {{e.eventType}}</p>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2">
+
+            <div class="price_list">
+              <div>
+                <p style="color:#e04f67;">{{convertMonth(e.dateStart)}}</p>
+                <br>
+                <p style="color:#666a73;">
+                  {{convertDate(e.dateStart)}}
+                </p>
+              </div>
+
             </div>
           </div>
         </div>
@@ -113,25 +151,13 @@
       <div class="text-center">
         <ul class="pagination">
           <li>
-            <a href="#">Prev</a>
+            <a (click)="prevButton()">Prev</a>
           </li>
           <li class="active">
-            <a href="#">1</a>
+            <a>{{n}}</a>
           </li>
           <li>
-            <a href="#">2</a>
-          </li>
-          <li>
-            <a href="#">3</a>
-          </li>
-          <li>
-            <a href="#">4</a>
-          </li>
-          <li>
-            <a href="#">5</a>
-          </li>
-          <li>
-            <a href="#">Next</a>
+            <a (click)="nextButton()">Next</a>
           </li>
         </ul>
       </div>
@@ -143,5 +169,3 @@
   <!-- End row -->
 </div>
 <!-- End container -->
-
-{{loadCatNav()}} {{loadCheckBox()}}

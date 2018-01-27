@@ -25,7 +25,18 @@ router.post("/register", (req, res)=>{
 
 router.post("/login", (req, res)=>{
 
-    userdb.findOne({username : req.body.username, password: req.body.password}, (error ,result)=>{
+    query={}
+    
+    if(req.body.username){
+        query.username = req.body.username
+        query.password = req.body.password
+    }
+    if(req.body.email){
+        query.email = req.body.email
+        query.password = req.body.password
+    }
+
+    userdb.findOne(query, (error ,result)=>{
         if(error){
             res.status(500).json(error);
         }
@@ -34,10 +45,13 @@ router.post("/login", (req, res)=>{
         }else{
             const payload ={
                 id:result._id,
-                name:result.username
+                username:result.username
             }
             const token = jwt.sign(payload, "secretkey", {expiresIn :1500 });
-            res.json({token:token});
+            const userid = result._id
+            const username =result.firstname
+            
+            res.json({token:token, userid:userid,username:username});
         };
     });
 });

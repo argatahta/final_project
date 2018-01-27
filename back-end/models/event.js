@@ -5,6 +5,7 @@ mongoose.connect('mongodb://localhost:27017/eventdb', { useMongoClient: true });
 const Schema = mongoose.Schema;
 
 const eventSchema = new Schema({
+    userid: String,
     title: String,
     location: String,
     dateStart: String,

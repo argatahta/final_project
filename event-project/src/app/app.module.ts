@@ -11,6 +11,8 @@ import { EventlistComponent } from './eventlist/eventlist.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { EventdetailComponent } from './eventdetail/eventdetail.component';
+import { AdminComponent } from './admin/admin.component';
+import { EventService } from './event.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { EventdetailComponent } from './eventdetail/eventdetail.component';
     EventlistComponent,
     LoginComponent,
     RegisterComponent,
-    EventdetailComponent
+    EventdetailComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,FormsModule,ReactiveFormsModule,HttpModule,
@@ -31,12 +34,13 @@ import { EventdetailComponent } from './eventdetail/eventdetail.component';
       {path:"login", component:LoginComponent},
       {path:"register", component:RegisterComponent},
       {path:"detail/:id", component:EventdetailComponent},
+      {path :"admin",component:AdminComponent},
       //if path doesnt exist, redirect to home
       {path: '**', redirectTo: ''}
 
     ])
   ],
-  providers: [],
+  providers: [EventService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,25 +1,26 @@
-<section id="hero">
-  <div class="intro_title">
-    <h3 class="animated fadeInDown">IndonesiaKu</h3>
-    <p class="animated fadeInDown">Direktori wisata dan event di Indonesia</p>
-    <a href="#" class="animated fadeInUp button_intro">Lihat Event</a>
-    <a href="#" class="animated fadeInUp button_intro outline">Destinasi Wisata</a>
+<section id="hero" style="background: url(../assets/img/eventImage/Jakarta-Panorama.jpg) no-repeat center center;background-size:cover;text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+">
+  <div class="intro_title"style="background-color:rgba(0,0,0,.32);
+  " >
+    <h3 class="animated fadeInDown">Indonesia Event</h3>
+    <p class="animated fadeInDown">Event Directory in Indonesia</p>
+    <a routerLink = "/eventlist" class="animated fadeInUp button_intro">See Events</a>
   </div>
 
   <div id="search_bar_container">
     <div class="container">
       <div class="search_bar">
         <span class="nav-facade-active" id="nav-search-in">
-          <span id="nav-search-in-content" style="">Semua Pencarian</span>
+          <span id="nav-search-in-content" style="">All</span>
           <span class="nav-down-arrow nav-sprite"></span>
           <select title="Search in" class="searchSelect" id="searchDropdownBox" name="tours_category">
-            <option value="Semua Pencarian" title="Semua Pencarian">Semua Pencarian</option>
-            <option value="Destinasi" title="Destinasi">Destinasi</option>
-            <option value="Event" title="Event">Event</option>
+            <option value="Semua Pencarian" title="Semua Pencarian">All</option>
+            <option value="Destinasi" title="Destinasi">Destinations</option>
+            <option value="Event" title="Event">Events</option>
           </select>
         </span>
         <div class="nav-searchfield-outer">
-          <input type="text" autocomplete="off" name="field-keywords" placeholder="Silahkan ketik kata kunci pencarian...." id="twotabsearchtextbox">
+          <input type="text" autocomplete="off" name="field-keywords" placeholder="Please input an event that you are looking for..." id="twotabsearchtextbox">
         </div>
         <div class="nav-submit-button">
           <input type="submit" title="Cerca" class="nav-submit-input" value="Search">
@@ -35,361 +36,29 @@
 <section class="container margin_60">
 
   <div class="main_title">
-    <h2>Sorot
-      <span>Destinasi</span> Utama</h2>
+    <h2>Upcoming
+      <span>Events</span></h2>
   </div>
 
-  <div class="row">
+  <div  class="row">
 
-    <div class="col-md-4 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
+    <div *ngFor = "let e of eventList , let i  = index" class="col-md-4 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
       <div class="tour_container">
-        <div class="ribbon_3 popular">
-
-        </div>
         <div class="img_container">
-          <a href="single_tour.html">
-            <img src="assets/img/tour_box_1.jpg" class="img-responsive" alt="Image">
+          <a routerLink="/detail/{{e._id}}">
+            <img src="{{e.eventPict}}" class="img-responsive" alt="Image">
           </a>
+          <div class="short_info">
+            <i></i>{{e.eventTopic}}
+            <span class="price">
+              {{convertDate(e.dateStart)}}<sup style="color:#e04f67">{{convertMonth(e.dateStart)}}</sup></span>
+          </div>
         </div>
         <div class="tour_title">
           <h3>
-            <strong>Jakarta</strong>
+            <strong>{{e.title}}</strong>
           </h3>
-          <p>Ini berupa deskripsi narasi dari Jakarta</p>
-        </div>
-      </div>
-      <!-- End box tour -->
-    </div>
-    <!-- End col-md-4 -->
-
-    <div class="col-md-4 col-sm-6 wow zoomIn" data-wow-delay="0.2s">
-      <div class="tour_container">
-        <div class="ribbon_3 popular">
-          <span>Popular</span>
-        </div>
-        <div class="img_container">
-          <a href="single_tour.html">
-            <img src="img/tour_box_2.jpg" width="800" height="533" class="img-responsive" alt="Image">
-            <div class="short_info">
-              <i class="icon_set_1_icon-43"></i>Churches
-              <span class="price">
-                <sup>$</sup>45</span>
-            </div>
-          </a>
-        </div>
-        <div class="tour_title">
-          <h3>
-            <strong>Notredame</strong> tour</h3>
-          <div class="rating">
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile"></i>
-            <small>(75)</small>
-          </div>
-          <!-- end rating -->
-          <div class="wishlist">
-            <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+
-              <span class="tooltip-content-flip">
-                <span class="tooltip-back">Add to wishlist</span>
-              </span>
-            </a>
-          </div>
-          <!-- End wish list-->
-        </div>
-      </div>
-      <!-- End box tour -->
-    </div>
-    <!-- End col-md-4 -->
-
-    <div class="col-md-4 col-sm-6 wow zoomIn" data-wow-delay="0.3s">
-      <div class="tour_container">
-        <div class="ribbon_3 popular">
-          <span>Popular</span>
-        </div>
-        <div class="img_container">
-          <a href="single_tour.html">
-            <img src="img/tour_box_3.jpg" width="800" height="533" class="img-responsive" alt="Image">
-            <div class="badge_save">Save
-              <strong>30%</strong>
-            </div>
-            <div class="short_info">
-              <i class="icon_set_1_icon-44"></i>Historic Buildings
-              <span class="price">
-                <sup>$</sup>48</span>
-            </div>
-          </a>
-        </div>
-        <div class="tour_title">
-          <h3>
-            <strong>Versailles</strong> tour</h3>
-          <div class="rating">
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile"></i>
-            <small>(75)</small>
-          </div>
-          <!-- end rating -->
-          <div class="wishlist">
-            <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+
-              <span class="tooltip-content-flip">
-                <span class="tooltip-back">Add to wishlist</span>
-              </span>
-            </a>
-          </div>
-          <!-- End wish list-->
-        </div>
-      </div>
-      <!-- End box tour -->
-    </div>
-    <!-- End col-md-4 -->
-
-    <div class="col-md-4 col-sm-6 wow zoomIn" data-wow-delay="0.4s">
-      <div class="tour_container">
-        <div class="ribbon_3 popular">
-          <span>Popular</span>
-        </div>
-        <div class="img_container">
-          <a href="single_tour.html">
-            <img src="img/tour_box_4.jpg" width="800" height="533" class="img-responsive" alt="Image">
-            <div class="short_info">
-              <i class="icon_set_1_icon-30"></i>Walking tour
-              <span class="price">
-                <sup>$</sup>36</span>
-            </div>
-          </a>
-        </div>
-        <div class="tour_title">
-          <h3>
-            <strong>Pompidue</strong> tour</h3>
-          <div class="rating">
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile"></i>
-            <small>(75)</small>
-          </div>
-          <!-- end rating -->
-          <div class="wishlist">
-            <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+
-              <span class="tooltip-content-flip">
-                <span class="tooltip-back">Add to wishlist</span>
-              </span>
-            </a>
-          </div>
-          <!-- End wish list-->
-        </div>
-      </div>
-      <!-- End box tour -->
-    </div>
-    <!-- End col-md-4 -->
-
-    <div class="col-md-4 col-sm-6 wow zoomIn" data-wow-delay="0.5s">
-      <div class="tour_container">
-        <div class="ribbon_3">
-          <span>Top rated</span>
-        </div>
-        <div class="img_container">
-          <a href="single_tour.html">
-            <img src="img/tour_box_14.jpg" width="800" height="533" class="img-responsive" alt="Image">
-            <div class="badge_save">Save
-              <strong>30%</strong>
-            </div>
-            <div class="short_info">
-              <i class="icon_set_1_icon-28"></i>Skyline tours
-              <span class="price">
-                <sup>$</sup>42</span>
-            </div>
-          </a>
-        </div>
-        <div class="tour_title">
-          <h3>
-            <strong>Tour Eiffel</strong> tour</h3>
-          <div class="rating">
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile"></i>
-            <small>(75)</small>
-          </div>
-          <!-- end rating -->
-          <div class="wishlist">
-            <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+
-              <span class="tooltip-content-flip">
-                <span class="tooltip-back">Add to wishlist</span>
-              </span>
-            </a>
-          </div>
-          <!-- End wish list-->
-        </div>
-      </div>
-      <!-- End box tour -->
-    </div>
-    <!-- End col-md-4 -->
-
-    <div class="col-md-4 col-sm-6 wow zoomIn" data-wow-delay="0.6s">
-      <div class="tour_container">
-        <div class="ribbon_3">
-          <span>Top rated</span>
-        </div>
-        <div class="img_container">
-          <a href="single_tour.html">
-            <img src="img/tour_box_5.jpg" width="800" height="533" class="img-responsive" alt="Image">
-            <div class="short_info">
-              <i class="icon_set_1_icon-44"></i>Historic Buildings
-              <span class="price">
-                <sup>$</sup>40</span>
-            </div>
-          </a>
-        </div>
-        <div class="tour_title">
-          <h3>
-            <strong>Pantheon</strong> tour</h3>
-          <div class="rating">
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile"></i>
-            <small>(75)</small>
-          </div>
-          <!-- end rating -->
-          <div class="wishlist">
-            <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+
-              <span class="tooltip-content-flip">
-                <span class="tooltip-back">Add to wishlist</span>
-              </span>
-            </a>
-          </div>
-          <!-- End wish list-->
-        </div>
-      </div>
-      <!-- End box tour -->
-    </div>
-    <!-- End col-md-4 -->
-
-    <div class="col-md-4 col-sm-6 wow zoomIn" data-wow-delay="0.7s">
-      <div class="tour_container">
-        <div class="ribbon_3">
-          <span>Top rated</span>
-        </div>
-        <div class="img_container">
-          <a href="single_tour.html">
-            <img src="img/tour_box_8.jpg" width="800" height="533" class="img-responsive" alt="Image">
-            <div class="short_info">
-              <i class="icon_set_1_icon-3"></i>City sightseeing
-              <span class="price">
-                <sup>$</sup>35</span>
-            </div>
-          </a>
-        </div>
-        <div class="tour_title">
-          <h3>
-            <strong>Open Bus</strong> tour</h3>
-          <div class="rating">
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile"></i>
-            <small>(75)</small>
-          </div>
-          <!-- end rating -->
-          <div class="wishlist">
-            <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+
-              <span class="tooltip-content-flip">
-                <span class="tooltip-back">Add to wishlist</span>
-              </span>
-            </a>
-          </div>
-          <!-- End wish list-->
-        </div>
-      </div>
-      <!-- End box tour -->
-    </div>
-    <!-- End col-md-4 -->
-
-    <div class="col-md-4 col-sm-6 wow zoomIn" data-wow-delay="0.8s">
-      <div class="tour_container">
-        <div class="ribbon_3">
-          <span>Top rated</span>
-        </div>
-        <div class="img_container">
-          <a href="single_tour.html">
-            <img src="img/tour_box_9.jpg" width="800" height="533" class="img-responsive" alt="Image">
-            <div class="short_info">
-              <i class="icon_set_1_icon-4"></i>Museums
-              <span class="price">
-                <sup>$</sup>38</span>
-            </div>
-          </a>
-        </div>
-        <div class="tour_title">
-          <h3>
-            <strong>Louvre museum</strong> tour</h3>
-          <div class="rating">
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile"></i>
-            <small>(75)</small>
-          </div>
-          <!-- end rating -->
-          <div class="wishlist">
-            <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+
-              <span class="tooltip-content-flip">
-                <span class="tooltip-back">Add to wishlist</span>
-              </span>
-            </a>
-          </div>
-          <!-- End wish list-->
-        </div>
-      </div>
-      <!-- End box tour -->
-    </div>
-    <!-- End col-md-4 -->
-
-    <div class="col-md-4 col-sm-6 wow zoomIn" data-wow-delay="0.9s">
-      <div class="tour_container">
-        <div class="ribbon_3">
-          <span>Top rated</span>
-        </div>
-        <div class="img_container">
-          <a href="single_tour.html">
-            <img src="img/tour_box_12.jpg" width="800" height="533" class="img-responsive" alt="Image">
-            <div class="short_info">
-              <i class="icon_set_1_icon-14"></i>Eat &amp; drink
-              <span class="price">
-                <sup>$</sup>25</span>
-            </div>
-          </a>
-        </div>
-        <div class="tour_title">
-          <h3>
-            <strong>Boulangerie</strong> tour</h3>
-          <div class="rating">
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile voted"></i>
-            <i class="icon-smile"></i>
-            <small>(75)</small>
-          </div>
-          <!-- end rating -->
-          <div class="wishlist">
-            <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+
-              <span class="tooltip-content-flip">
-                <span class="tooltip-back">Add to wishlist</span>
-              </span>
-            </a>
-          </div>
-          <!-- End wish list-->
+          <p>{{e.location}}</p>
         </div>
       </div>
       <!-- End box tour -->
@@ -400,8 +69,8 @@
   <!-- End row -->
 
   <p class="text-center nopadding">
-    <a href="#" class="btn_1 medium">
-      <i class="icon-eye-7"></i>Lihat Semua Destinasi </a>
+    <a routerLink= "/eventlist" class="btn_1 medium">
+      <i class="icon-eye-7"></i>See all event ({{eventTotal}}) </a>
   </p>
 </section>
 <!-- End section -->
@@ -419,126 +88,6 @@
       </a>
     </div>
   </div>
-</section>
-<!-- End section -->
-
-<section class="white_bg">
-  <div class="container margin_60">
-    <div class="main_title">
-      <h2>
-        <span>Event</span> Terkini</h2>
-    </div>
-    
-    <div class="owl-carousel owl-theme">
-      <div class="item">
-        <p>
-          <a href="#">
-            <img src="img/hotel.jpg" alt="Pic" class="img-responsive">
-          </a>
-        </p>
-        <h4>
-          <span>Hotel</span> booking</h4>
-        <p>Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset,
-          doctus volumus explicari qui ex.</p>
-      </div>
-  
-      <div class="item">
-        <p>
-          <a href="#">
-            <img src="img/hotel.jpg" alt="Pic" class="img-responsive">
-          </a>
-        </p>
-        <h4>
-          <span>Hotel</span> booking</h4>
-        <p>Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset,
-          doctus volumus explicari qui ex.</p>
-      </div>
-  
-      <div class="item">
-        <p>
-          <a href="#">
-            <img src="img/hotel.jpg" alt="Pic" class="img-responsive">
-          </a>
-        </p>
-        <h4>
-          <span>Hotel</span> booking</h4>
-        <p>Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset,
-          doctus volumus explicari qui ex.</p>
-      </div>
-  
-      <div class="item">
-        <p>
-          <a href="#">
-            <img src="img/hotel.jpg" alt="Pic" class="img-responsive">
-          </a>
-        </p>
-        <h4>
-          <span>Hotel</span> booking</h4>
-        <p>Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset,
-          doctus volumus explicari qui ex.</p>
-      </div>
-  
-      <div class="item">
-        <p>
-          <a href="#">
-            <img src="img/hotel.jpg" alt="Pic" class="img-responsive">
-          </a>
-        </p>
-        <h4>
-          <span>Hotel</span> booking</h4>
-        <p>Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset,
-          doctus volumus explicari qui ex.</p>
-      </div>
-  
-      <div class="item">
-        <p>
-          <a href="#">
-            <img src="img/hotel.jpg" alt="Pic" class="img-responsive">
-          </a>
-        </p>
-        <h4>
-          <span>Hotel</span> booking</h4>
-        <p>Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset,
-          doctus volumus explicari qui ex.</p>
-      </div>
-  
-      <div class="item">
-        <p>
-          <a href="#">
-            <img src="img/hotel.jpg" alt="Pic" class="img-responsive">
-          </a>
-        </p>
-        <h4>
-          <span>Hotel</span> booking</h4>
-        <p>Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset,
-          doctus volumus explicari qui ex.</p>
-      </div>
-  
-      <div class="item">
-        <p>
-          <a href="#">
-            <img src="img/hotel.jpg" alt="Pic" class="img-responsive">
-          </a>
-        </p>
-        <h4>
-          <span>Hotel</span> booking</h4>
-        <p>Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset,
-          doctus volumus explicari qui ex.</p>
-      </div>
-    </div>
-    {{loadOwlCarousel()}}
-    <!-- End row -->
-  
-    <p class="text-center nopadding">
-      <a href="#" class="btn_1 medium">
-        <i class="icon-eye-7"></i>Lihat Semua Event </a>
-    </p>
-    
-
-  </div>
-  <!-- End container -->
-
-
 </section>
 <!-- End section -->
 

@@ -4,19 +4,40 @@
       <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
         <div id="login">
           <div class="text-center">
-            <img src="img/logo_sticky.png" alt="Image" data-retina="true">
+            <h2>IndonesiaKu</h2>
           </div>
           <hr>
-          <form #f="ngForm" (ngSubmit)= "login(f)">
+          <form #f="ngForm" (ngSubmit)="login(f)">
 
-            <div class="form-group">
-              <label>Username</label>
-              <input type="text" class=" form-control " placeholder="Username" name="username" ngModel>
-            </div>
-            <div class="form-group">
-              <label>Password</label>
-              <input type="password" class=" form-control" placeholder="Password" name="password" ngModel>
-            </div>
+              <div class="form-group">
+                <label>Username or Email</label>
+                <input type="text" class=" form-control " placeholder="Username" name="usernameOrEmail" ngModel required #username="ngModel">
+                <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+                  <div *ngIf="username.errors.required">
+                    username or email is required.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" class=" form-control" placeholder="Password" name="password" ngModel required #password ="ngModel">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                  <div *ngIf="password.errors.required">
+                    password is required.
+                  </div>
+                </div>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" (change)="checkboxChecked($event)"> Remember Me
+                </label>
+              </div>
+              <div class="alert alert-warning" *ngIf="usernameError == true">
+                All fields is required.
+              </div>
+              <div class="alert alert-warning" *ngIf="submitError == true">
+                Login Failed. <br>Please check your username or password.
+              </div>
             
             <button type = "submit" class="btn_full">Login</button>
 

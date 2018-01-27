@@ -14,13 +14,14 @@
     <form #f="ngForm" (ngSubmit)="submit(f)">
       <div class="form-group">
         <label>EVENT TITLE</label>
-        <input class="form-control" name="title" id="title" type="text" placeholder="Give it a short distinct name"  ngModel required #title="ngModel">
-        <div [hidden]= "title.valid ||title.pristine" class="alert alert-danger">Title is Required</div>
+        <input class="form-control" name="title" id="title" type="text" placeholder="Give it a short distinct name" ngModel required
+          #title="ngModel">
+        <div [hidden]="title.valid ||title.pristine" class="alert alert-danger">Title is Required</div>
       </div>
 
       <div class="form-group">
         <label>LOCATION</label>
-        <input class="form-control" name="location" id="location" type="text" placeholder="Event place" ngModel >
+        <input class="form-control" name="location" id="location" type="text" placeholder="Event place" ngModel>
       </div>
 
       <div class="form-inline">
@@ -60,33 +61,27 @@
       <div class="form-group">
         <label>EVENT TYPE</label>
         <select class="form-control" name="eventType" id="eventType" type="text" ngModel>
-          <option *ngFor="let t of typeList" [value]= "t">{{t}}</option>
+          <option *ngFor="let t of typeList" [value]="t">{{t}}</option>
         </select>
       </div>
 
       <div class="form-group">
-          <label>EVENT TOPIC</label>
-          <select class="form-control" name="eventTopic" id="eventTopic" type="text" ngModel>
-            <option *ngFor="let t of topicList" [value]= "t">{{t}}</option>
-          </select>
-        </div>
-
-      <!-- <div class="form-group">
         <label>EVENT TOPIC</label>
         <select class="form-control" name="eventTopic" id="eventTopic" type="text" ngModel>
-          <option *ngFor "let top of topicList" [value]="top">{{top}}</option>
+          <option *ngFor="let t of topicList" [value]="t">{{t}}</option>
         </select>
-      </div> -->
+      </div>
 
       <div class="form-group">
         <label>CONTACT</label>
         <input class="form-control" name="contact" id="contact" type="text" placeholder="Input event organizer contact" ngModel>
       </div>
 
-      <label>EVENT IMAGE</label><br>
+      <label>EVENT IMAGE</label>
+      <br>
 
       <input type="file" (change)="fileChange($event)">
-      
+
       <p>only file in .jpg, .jpeg, .bmp, and .gif</p>
 
       <br>

@@ -16,13 +16,15 @@ export class RegisterComponent implements OnInit {
   }
 
   register(f: NgForm) {
-
+    
     if(f.value.username != null && f.value.username != "" && f.value.password != null && f.value.password != "" && f.value.email != null && f.value.email != "") {
 
       let obj = {
         username: f.value.username,
         password: f.value.password,
-        email: f.value.email
+        email: f.value.email,
+        firstname: f.value.firstname,
+        lastname: f.value.lastname
       }
 
       let header = new Headers({ "Content-Type": "application/json" });
@@ -31,7 +33,7 @@ export class RegisterComponent implements OnInit {
       this.http.post("http://localhost:3000/api/user/register", obj, options)
         .subscribe(
         result => {
-          this.route.navigate(["/"]);
+          this.route.navigate(["/login"]);
         },
         error => {
           console.log("Please Try Again")

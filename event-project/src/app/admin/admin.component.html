@@ -1,0 +1,194 @@
+<section class="parallax-window" style="background: url(../assets/img/eventImage/Jakarta-Panorama.jpg) no-repeat center center;background-size:cover;text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+">
+  <div class="parallax-content-1" style="background-color:rgba(0,0,0,.32);
+  ">
+    <div class="animated fadeInDown">
+      <h1>Admin</h1>
+      <p>Update or delete your Posts</p>
+    </div>
+  </div>
+</section>
+<!-- End section -->
+
+<div id="position">
+  <div class="container">
+    <ul>
+      <li>
+        <a routerLink="/">Home</a>
+      </li>
+      <li>
+        <a href="#">Category</a>
+      </li>
+      <li>Page active</li>
+    </ul>
+  </div>
+</div>
+<!-- Position -->
+
+
+<!-- End Map -->
+
+<div class="container margin_60">
+  <div class="row">
+    <div *ngFor="let e of eventList, let i = index" class="strip_booking">
+      <div class="row">
+        <div class="col-md-2 col-sm-2">
+          <div class="date">
+            <span class="month">{{convertMonth(e.dateStart)}}</span>
+            <span class="day">
+              <strong>{{convertDate(e.dateStart)}}</strong>Sat</span>
+          </div>
+        </div>
+
+        <div class="col-md-2 col-sm-2">
+          <div class="img_list" style="height: 90px;min-height: 0;">
+            <a routerLink="/detail/{{e._id}}">
+              <img src="{{e.eventPict}}" class="img-responsive" alt="Image">
+            </a>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <h3 class="">{{e.title}}
+            <span>{{e.eventTopic}}</span>
+          </h3>
+        </div>
+        <div class="col-md-3 col-sm-3">
+          <ul class="info_booking">
+            <li>
+              <strong>id</strong> {{e._id}}</li>
+            <li>
+              <strong>Ends on </strong> {{e.dateEnd}}</li>
+          </ul>
+        </div>
+        <div class="col-md-1 col-sm-1">
+          <div class="booking_buttons">
+            <button style="width: 60px;" class="btn_2 " (click)="toogleModal(e._id)">Edit </button>
+            <button class="btn_3" (click)="deleteEvent(e._id)">Delete</button>
+          </div>
+
+        </div>
+      </div>
+      <!-- End row -->
+    </div>
+    <!-- End strip booking -->
+    <hr>
+
+    <div class="text-center">
+      <ul class="pagination">
+        <li>
+          <a href="#">Prev</a>
+        </li>
+        <li class="active">
+          <a href="#">1</a>
+        </li>
+        <li>
+          <a href="#">Next</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- End container -->
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form #f="ngForm" (ngSubmit)="editEvent(f)">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">Edit Event
+          </h4>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-group">
+            <label>ID</label>
+            <input class="form-control" name="id" id="id" type="text" [(ngModel)]="obj._id"
+              ngModel readonly>
+          </div>
+
+          <div class="form-group">
+            <label>EVENT TITLE</label>
+            <input class="form-control" name="title" id="title" type="text" placeholder="Give it a short distinct name" [(ngModel)]="obj.title"
+              ngModel>
+          </div>
+
+          <div class="form-group">
+            <label>LOCATION</label>
+            <input class="form-control" name="location" id="location" type="text" placeholder="Event place" value="tes" [(ngModel)]="obj.location"
+              ngModel>
+          </div>
+
+          <div class="form-inline">
+            <label>STARTS</label>
+            <br>
+            <div class="form-group">
+              <input class="form-control" name="dateStart" id="dateStart" type="date" [(ngModel)]="obj.dateStart" ngModel>
+            </div>
+            <div class="form-group">
+              <input type="time" class="form-control" name="timeStart" [(ngModel)]="obj.timeStart" ngModel>
+            </div>
+          </div>
+          <br>
+
+          <div class="form-inline">
+            <label>ENDS</label>
+            <br>
+            <div class="form-group">
+              <input class="form-control" name="dateEnd" id="dateEnd" type="date" [(ngModel)]="obj.dateEnd" ngModel>
+            </div>
+            <div class="form-group">
+              <input type="time" class="form-control" name="timeEnd" [(ngModel)]="obj.timeEnd" ngModel>
+            </div>
+          </div>
+          <br>
+
+          <div class="form-group">
+            <label>PRICE</label>
+            <input class="form-control" name="price" id="price" type="text" placeholder="Any ticket price?" [(ngModel)]="obj.price" ngModel>
+          </div>
+
+          <div class="form-group">
+            <label>EVENT DESCRIPTION</label>
+            <textarea class="form-control" rows="10" style="resize:none;" name="description" id="description" type="text" [(ngModel)]="obj.description"
+              ngModel></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>EVENT TYPE</label>
+            <select class="form-control" name="eventType" id="eventType" type="text" [(ngModel)]="obj.eventType" ngModel>
+              <option *ngFor="let t of typeList" [value]="t">{{t}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>EVENT TOPIC</label>
+            <select class="form-control" name="eventTopic" id="eventTopic" type="text" [(ngModel)]="obj.eventTopic" ngModel>
+              <option *ngFor="let t of topicList" [value]="t">{{t}}</option>
+            </select>
+          </div>
+
+
+
+          <div class="form-group">
+            <label>CONTACT</label>
+            <input class="form-control" name="contact" id="contact" type="text" placeholder="Input event organizer contact" [(ngModel)]="obj.contact"
+              ngModel>
+          </div>
+
+          <br>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
