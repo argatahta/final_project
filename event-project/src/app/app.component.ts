@@ -1,18 +1,45 @@
-import { Component,AfterViewChecked} from '@angular/core';
+import { Component,AfterViewChecked, OnInit} from '@angular/core';
+
+declare var $:any
+declare var jQuery:any
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
   loginUsername = "Sign in"
   logout = "Logout"
   visible = false
   
+ngOnInit(){
+ this.loadDropdownMenu();
+
+}
+
+loadDropdownMenu(){
+  $('a.open_close').on("click",function() {
+    $('.main-menu').toggleClass('show');
+    $('.layer').toggleClass('layer-is-visible');
+  });
+  $('a.show-submenu').on("click",function() {
+    $(this).next().toggleClass("show_normal");
+  });
+  $('a.show-submenu-mega').on("click",function() {
+    $(this).next().toggleClass("show_mega");
+  });
+  if($(window).width() <= 480){
+    $('a.open_close').on("click",function() {
+    $('.cmn-toggle-switch').removeClass('active')
+  });
+  }
+}
+
   ngAfterViewChecked(){
-    
+   
+
     if(!sessionStorage.getItem("username") && !localStorage.getItem("username")){
       this.loginUsername = "Sign in"
       this.visible = false

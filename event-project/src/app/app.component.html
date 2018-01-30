@@ -1,10 +1,10 @@
 <div class="layer"></div>
 <!-- Mobile menu overlay mask -->
 
-<!-- Header================================================== -->
-<header>
+<!-- Header Plain:  add the id plain to header and change logo.png to logo_sticky.png ======================= -->
+<header id="plain" style="border-bottom:1px solid #ddd;">
   <div id="top_line">
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
         <div class="col-md-6 col-sm-6 col-xs-6">
           <i class="icon-phone"></i>
@@ -12,18 +12,18 @@
         </div>
 
         <div class="col-md-6 col-sm-6 col-xs-6">
-          <ul id="top_links">
-            <li *ngIf="visible">
-              <a routerLink="/admin" class="dropdown-toggle" data-toggle="dropdown" id="access_link">{{loginUsername}}</a>
-            </li>
-            <li *ngIf="visible == false">
-              <a routerLink="/login" class="dropdown-toggle" data-toggle="dropdown" id="access_link">{{loginUsername}}</a>
-            </li>
-            <li *ngIf="visible">
-              <a routerLink="/" class="dropdown-toggle" data-toggle="dropdown" id="logout" (click)="logoutButton()">{{logout}}</a>
-            </li>
+            <ul id="top_links">
+                <li *ngIf="visible">
+                    <a routerLink="/admin" class="dropdown-toggle" data-toggle="dropdown" id="access_link">{{loginUsername}}</a>
+                </li>
+                <li *ngIf="visible == false">
+                    <a routerLink="/login" class="dropdown-toggle" data-toggle="dropdown" id="access_link">{{loginUsername}}</a>
+                </li>
+                <li *ngIf="visible">
+                    <a routerLink="/" class="dropdown-toggle" data-toggle="dropdown" id="logout" (click)="logoutButton()">{{logout}}</a>
+                </li>
 
-          </ul>
+            </ul>
         </div>
       </div>
       <!-- End row -->
@@ -32,53 +32,81 @@
   </div>
   <!-- End top line-->
 
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
-      <div class="col-xs-3">
-        <div id="logo_home">
-          <h1>
-            <a style="color:aqua;" href="index.html" title="Indonesia Event">Indonesia Event</a>
-          </h1>
+      <div class="col-md-3 col-sm-3 col-xs-3">
+        <div>
+          <h2>
+            <a routerLink="/" title="IndoEvent">IndoEvent</a>
+          </h2>
         </div>
       </div>
-      <nav class=" col-xs-7 col-offset-xs ">
-        <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);">
+      <nav class="col-md-9 col-sm-9 col-xs-9">
+        <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" >
           <span>Menu mobile</span>
         </a>
         <div class="main-menu">
           <div id="header_menu">
-            <img src="img/logo_sticky.png" width="160" height="34" alt="City tours" data-retina="true">
+            <h3>IndoEvent</h3>
           </div>
-          <a href="#" class="open_close" id="close_in">
+          <a  class="open_close" id="close_in">
             <i class="icon_set_1_icon-77"></i>
           </a>
           <ul>
-            <li class="submenu col-xs-2">
-              <a routerLink="/" class="show-submenu">Home
+            <li class="submenu">
+              <a class="show-submenu">Menu
+                <i class="icon-down-open-mini"></i>
               </a>
-            </li>
-            <li class="submenu col-xs-2">
-              <a routerLink="/eventlist" class="show-submenu ">Event
-              </a>
-            </li>
-            <li class="submenu col-xs-4">
-              <a routerLink="/admin" class="show-submenu ">Admin
-              </a>
+              <ul>
+                <li>
+                  <a routerLink = "/eventlist">Event List</a>
+                </li>
+                <li>
+                  <a routerLink ="/admin">Admin Page</a>
+                </li>
+                <li>
+                  <a routerLink = "/submit">Post Event</a>
+                </li>
+              </ul>
             </li>
           </ul>
         </div>
         <!-- End main-menu -->
-      </nav>
-      <nav >
-        <div class="main-menu">
-          <a routerLink="/submit" class="btn_1" style="display:inline; margin-left:10px;color:white;">Post Event</a>
-        </div>
+        <ul id="top_tools">
+          <li>
+            <div class="dropdown dropdown-search">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-search"></i>
+              </a>
+              <div class="dropdown-menu">
+                <form>
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button" style="margin-left:0;">
+                        <i class="icon-search"></i>
+                      </button>
+                    </span>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="dropdown dropdown-cart">
+                <a routerLink="/submit" class="btn_1" style="display:inline; margin-left:10px;color:white;">Post Event</a>
+            </div>
+            <!-- End dropdown-cart-->
+          </li>
+        </ul>
       </nav>
     </div>
   </div>
   <!-- container -->
 </header>
 <!-- End Header -->
+
+
 
 <router-outlet></router-outlet>
 

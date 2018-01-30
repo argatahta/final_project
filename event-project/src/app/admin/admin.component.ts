@@ -76,7 +76,7 @@ export class AdminComponent implements OnInit {
       this.userid = sessionStorage.getItem("userid")
     }
     console.log(this.userid)
-    this.http.get("http://localhost:3000/api/event?limit=4&user=" + this.userid)
+    this.http.get("http://localhost:3000/api/event?user=" + this.userid)
       .subscribe(
       result => {
         this.eventList = result.json();

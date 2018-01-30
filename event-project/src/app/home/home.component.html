@@ -11,7 +11,7 @@
     <div class="container">
       <div class="search_bar">
         <span class="nav-facade-active" id="nav-search-in">
-          <span id="nav-search-in-content" style="">All</span>
+          <span id="nav-search-in-content" >All</span>
           <span class="nav-down-arrow nav-sprite"></span>
           <select title="Search in" class="searchSelect" id="searchDropdownBox" name="tours_category">
             <option value="Semua Pencarian" title="Semua Pencarian">All</option>
@@ -43,7 +43,7 @@
   <div  class="row">
 
     <div *ngFor = "let e of eventList , let i  = index" class="col-md-4 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
-      <div class="tour_container">
+      <div class="tour_container" style="height: 400px;">
         <div class="img_container">
           <a routerLink="/detail/{{e._id}}">
             <img src="{{e.eventPict}}" class="img-responsive" alt="Image">
@@ -75,10 +75,11 @@
 </section>
 <!-- End section -->
 
-<section class="promo_full">
+<section class="promo_full" style="background: url(..assets/img/eventImage/23416979_127351347955697_9196758946314977280_n.jpg) no-repeat center center;background-size:cover;text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+">
   <div class="promo_full_wp magnific">
     <div>
-      <h3>Ini isinya video dari youtube</h3>
+      <h3>Event Promo</h3>
       <p>
         Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset,
         doctus volumus explicari qui ex.

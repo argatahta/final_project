@@ -35,4 +35,28 @@ export class EventdetailComponent implements OnInit {
       )
   }
 
+  convertDate(d) {
+    var newDate = new Date(d);
+    return newDate.getDate();
+  }
+
+  convertMonth(m) {
+    var newMonth = new Date(m).getMonth();
+
+    var month = new Array();
+    month[0] = "JAN";
+    month[1] = "FEB";
+    month[2] = "MAR";
+    month[3] = "APR";
+    month[4] = "MAY";
+    month[5] = "JUN";
+    month[6] = "JUL";
+    month[7] = "AUG";
+    month[8] = "SEP";
+    month[9] = "OCT";
+    month[10] = "NOV";
+    month[11] = "DEC";
+    return month[newMonth]
+  }
+
 }
